@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Image</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="filter-menu">
+        <h1>Filter Menu</h1>
+        <ul class="ul">
+            <li class="current">All Menu</li>
+            <li>Shirt</li>
+            <li>Shoes</li>
+            <li>Bag</li>
+            <li>Watch</li>
+        </ul>
+
+        <div class="items">
+            <img src="images/shirt1.jpg" data-filter="shirt">
+            <img src="images/shirt2.jpg" data-filter="shirt">
+            <img src="images/shirt3.jpg" data-filter="shirt">
+            <img src="images/shirt4.jpg" data-filter="shirt">
+            <img src="images/shoes-one.jpeg" data-filter="shoes">
+            <img src="images/shoes-two.jpg" data-filter="shoes">
+            <img src="images/shoes-three.jpg" data-filter="shoes">
+            <img src="images/shoes-for.jpg" data-filter="shoes">
+            <img src="images/bag1.jpg" data-filter="bag">
+            <img src="images/bag2.jpg" data-filter="bag">
+            <img src="images/bag3.jpg" data-filter="bag">
+            <img src="images/bag4.jpg" data-filter="bag">
+            <img src="images/watch1.jpg" data-filter="watch">
+            <img src="images/watch2.jpg" data-filter="watch">
+            <img src="images/watch3.jpg" data-filter="watch">
+            <img src="images/watch4.jpg" data-filter="watch">
+        </div>
+    </section>
+
+    <script>
+        const liproduct = document.querySelectorAll('ul li');
+        const img = document.querySelectorAll('.items img');
+
+        liproduct.forEach(li => {
+            li.onclick = function () {
+                //active
+                liproduct.forEach(li => {
+                    li.className = "";
+                })
+                li.className = "current";
+
+                //Filter
+                const value = li.textContent;
+                img.forEach(img => {
+                    img.style.display = 'none';
+                    if (img.getAttribute('data-filter') == value.toLowerCase() || value ==
+                        "All Menu") {
+                        img.style.display = 'block';
+                    }
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>
